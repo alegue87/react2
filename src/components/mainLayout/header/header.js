@@ -7,8 +7,8 @@ export default class Header extends React.Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-success">
                     <a className="navbar-brand" href="/#home">
+                        {/*www.flaticon.com/free-icon/profits_909769*/}
                         <img src={Logo} className="logo-image" alt='logo'/>
-                        
                     </a>
                     <button
                         className="navbar-toggler"
