@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/home/home';
 import Login from './components/login/login';
 import MainTemplate from './components/mainLayout/template/mainTemplate';
+import Dashboard from './components/dashboard/dashboard';
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home}></Route>
             <Route exact path='/login' component={Login}></Route>
+            <Route exact path='/dashboard' component={Dashboard}></Route>
           </Switch>
         </MainTemplate>  
       </BrowserRouter>

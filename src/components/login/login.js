@@ -2,6 +2,9 @@ import React from 'react';
 import '../../css/login/login.css';
 import User from '../../images/user.png';
 import LoginService from './loginService';
+import Cookies from 'universal-cookie';
+import { Link } from 'react-router-dom';
+import Dashboard from '../dashboard/dashboard';
 
 export default class Login extends React.Component {
     constructor(prop){
@@ -17,15 +20,22 @@ export default class Login extends React.Component {
         this.loginService = new LoginService()
     }
     inputChange(field, event){
-        this.setState({[field]:event.target.value})
+        this.setState({
+            [field]:event.target.value,
+            loginError:false,
+            loginErrorMessage:''
+        })
     }
     submit(event){
         event.preventDefault();
     }
-    onSuccess(data){
+    onSuccess(username, token){
+        const cookies = new Cookies();
+        cookies.set('token', token, { path: '/' })
+        cookies.set('username', username, {path: '/'})
         this.setState({
             loginSuccess:true,
-            loginSuccessMessage:'Login effettuato, token: '+data.token
+            loginSuccessMessage:'Login effettuato, token: '+cookies.get('token')
         })
     }
     onError(error){
@@ -62,6 +72,13 @@ export default class Login extends React.Component {
         }
         else{
             return(<div></div>)
+        }
+    }
+    componentDidUpdate(){
+        if(this.state.loginSuccess){
+            setTimeout(() => {
+                this.props.history.push('/dashboard')
+            },2000)
         }
     }
     render() {
@@ -102,7 +119,7 @@ export default class Login extends React.Component {
                     <div id='formFooter'>
                         <a className='underlineHover' href='#'>Forgot Password?</a>
                         {loginSuccessMessage}
-                        {loginErrorMessage}
+                        {loginErrorMessage}                       
                     </div>
                 </div>
             </div>
