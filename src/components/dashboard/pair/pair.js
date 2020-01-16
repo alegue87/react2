@@ -10,14 +10,16 @@ export default class Pair extends React.Component{
         super(props);
         this.fixedHeightPaper = this.props.fixedHeightPaper;
         this.classPaper = this.props.classPaper;
+        this.pairName = this.props.pairName;
+        this.history = this.props.history;
     }
     render(){
         return(
             <Grid container spacing={3}>
                 {/* Chart */}
                 <Grid item xs={12} md={8} lg={9}>
-                    <Paper className={this.fixedHeightPaper}>
-                        <Chart />
+                    <Paper className={this.fixedHeightPaper} >
+                        <Chart args={{history:this.history, pairName:this.pairName}}/>
                     </Paper>
                 </Grid>
                 {/* Recent Deposits */}
@@ -27,11 +29,11 @@ export default class Pair extends React.Component{
                     </Paper>
                 </Grid>
                 {/* Recent Orders */}
-                <Grid item xs={12}>
+                {/*<Grid item xs={12}>
                     <Paper className={this.classPaper}>
                         <Orders />
                     </Paper>
-                </Grid>
+                </Grid>*/}
             </Grid>
         )
     }

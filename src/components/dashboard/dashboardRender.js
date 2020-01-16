@@ -115,7 +115,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Dashboard(data) {
+export default function Dashboard({data}) { // destruttura da props
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -126,7 +126,22 @@ export default function Dashboard(data) {
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-    console.log("Dati in render "+data)
+    var pairs = [];
+    if(data != undefined){
+        data.forEach( (pair) => {
+            var pairName = Object.keys(pair)
+            pairs.push((
+                <Pair 
+                    fixedHeightPaper={fixedHeightPaper}
+                    classPaper={classes.paper}
+                    pairName={pairName}
+                    history={pair[pairName]}
+                />
+                
+            ))
+        })  
+    }
+
     return (        
         <div className={classes.main}>
             <CssBaseline />
@@ -171,14 +186,8 @@ export default function Dashboard(data) {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>         
-                    <Pair 
-                        fixedHeightPaper={fixedHeightPaper}
-                        classPaper={classes.paper}
-                    />
-                    <Pair 
-                        fixedHeightPaper={fixedHeightPaper}
-                        classPaper={classes.paper}
-                    />
+                    
+                    {pairs}
 
                     <Box pt={4}>
                         <Copyright />

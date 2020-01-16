@@ -18,13 +18,14 @@ export default class Dashboard extends React.Component{
     }
     onSuccess(data){
         this.data = data
+        this.setState({dataRetrived:true})
     }
     onError(error){
         console.log(error)
     }
     render(){
         return(
-            <DashRender data={this.data}/>
+           <DashRender data={this.data}/>
         )
     }
 }

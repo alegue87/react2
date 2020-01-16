@@ -4,10 +4,10 @@ import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGri
 import Title from '../title';
 
 // Generate Sales Data
-function createData(time, amount) {
-    return { time, amount };
+function createData(time, balance, equity) {
+    return { time, balance, equity };
 }
-
+/*
 const data = [
     createData('00:00', 0),
     createData('03:00', 300),
@@ -18,14 +18,20 @@ const data = [
     createData('18:00', 2400),
     createData('21:00', 2400),
     createData('24:00', undefined),
-];
+];*/
 
-export default function Chart() {
+export default function Chart({args}) { // destruttura da props
+    var history = args.history;
+    var pairName = args.pairName;
     const theme = useTheme();
-
+    var data = [];
+    history.forEach( (info) => {
+        data.push(createData(info.datetime, info.balance, info.equity))
+    })
+    
     return (
         <React.Fragment>
-            <Title>EUR/USD</Title>
+            <Title>{pairName}</Title>
             <ResponsiveContainer>
                 <LineChart
                     data={data}
@@ -48,7 +54,8 @@ export default function Chart() {
                         </Label>
                     </YAxis>
                     <Tooltip/>
-                    <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main}  />
+                    <Line type="monotone" dataKey="balance" stroke={theme.palette.primary.main}  />
+                    <Line type="monotone" dataKey="equity" stroke={theme.palette.secondary.main}  />
                 </LineChart>
             </ResponsiveContainer>
         </React.Fragment>
