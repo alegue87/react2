@@ -18,6 +18,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import Pair from './pair/pair';
+import DashboardService from './dashboardService';
+import Cookie from 'universal-cookie';
 
 function Copyright() {
     return (
@@ -125,6 +127,18 @@ export default function Dashboard() {
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+    const cookie = new Cookie();
+    const token = cookie.get('token');
+    const username = cookie.get('username');
+    const dashboardService = new DashboardService();
+    dashboardService.getDashboard(token, username,
+        function(data){
+            console.log(data);
+        }, 
+        function(error){
+            console.log(error)
+        }
+    );
     return (
         <div className={classes.main}>
             <CssBaseline />
