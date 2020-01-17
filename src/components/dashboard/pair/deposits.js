@@ -14,21 +14,39 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Deposits() {
+export default function Deposits({history, pairName}) {
+    var dt = new Date();
+    var date = dt.getMonth()+1 + '/' + dt.getFullYear();
+    var last = history[history.length-1]
+    last.balance = Math.floor(last.balance)
+    var first = history[0];
+    var gain = Math.floor(last.balance - first.balance);
+
+    var showGain = ''
+    if(gain>0){
+        showGain = '+'+gain+' €'
+    }
+    else{
+        showGain = gain+' €'
+    }
     const classes = useStyles();
+    const linkToHistory = '/history/'+pairName
     return (
         <React.Fragment>
-            <Title>Recent Deposits</Title>
+            <Title>Balance</Title>
             <Typography component="p" variant="h4">
-                $3,024.00
-      </Typography>
+                € {last.balance}
+            </Typography>
             <Typography color="textSecondary" className={classes.depositContext}>
-                on 15 March, 2019
-      </Typography>
+                    Periodo: {date}
+            </Typography>
+            <Typography color="textSecondary" className={classes.depositContext}>
+                    Guadagno/perdita: {showGain}
+            </Typography>
             <div>
-                <Link color="primary" href="#" onClick={preventDefault}>
-                    View balance
-        </Link>
+                <Link color="primary" href={linkToHistory}>
+                    Guarda storico
+                </Link>
             </div>
         </React.Fragment>
     );

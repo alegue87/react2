@@ -15,17 +15,17 @@ export default class Pair extends React.Component{
     }
     render(){
         return(
-            <Grid container spacing={3}>
+            <Grid container spacing={1}>
                 {/* Chart */}
-                <Grid item xs={12} md={8} lg={9}>
+                <Grid item xs={12} md={12} lg={9}>
                     <Paper className={this.fixedHeightPaper} >
                         <Chart args={{history:this.history, pairName:this.pairName}}/>
                     </Paper>
                 </Grid>
                 {/* Recent Deposits */}
-                <Grid item xs={12} md={4} lg={3}>
+                <Grid item xs={12} md={12} lg={3}>
                     <Paper className={this.fixedHeightPaper}>
-                        <Deposits />
+                        <Deposits history={this.history} pairName={this.pairName}/>
                     </Paper>
                 </Grid>
                 {/* Recent Orders */}

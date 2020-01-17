@@ -4,32 +4,57 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+//import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
+import HomeIcon from '@material-ui/icons/Home';
+//import BarChartIcon from '@material-ui/icons/BarChart';
+//import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
+function openUsersPage(){
+    window.location.href = '/users'
+}
+function openHomePage(){
+    window.location.href = '/'
+}
+function logout(){
+    window.location.href = '/logout'
+}
 export const mainListItems = (
     <div>
+        <ListItem button onClick={openHomePage}>
+            <ListItemIcon>
+                <HomeIcon/>
+            </ListItemIcon>
+            <ListItemText primary='Home'/>
+        </ListItem>
         <ListItem button>
             <ListItemIcon>
                 <DashboardIcon />
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
         </ListItem>
+        <ListItem button onClick={openUsersPage}>
+            <ListItemIcon>
+                <PeopleIcon />                    
+            </ListItemIcon>
+            <ListItemText primary="Utenti" />
+        </ListItem>
+        <ListItem button onClick={logout}>
+            <ListItemIcon>
+                <ExitToAppIcon />                    
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+        </ListItem>
+        
+        {/*}
         <ListItem button>
             <ListItemIcon>
                 <ShoppingCartIcon />
             </ListItemIcon>
             <ListItemText primary="Orders" />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon>
-                <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Customers" />
-        </ListItem>
+        </ListItem>               
         <ListItem button>
             <ListItemIcon>
                 <BarChartIcon />
@@ -42,6 +67,7 @@ export const mainListItems = (
             </ListItemIcon>
             <ListItemText primary="Integrations" />
         </ListItem>
+        */}
     </div>
 );
 

@@ -44,7 +44,11 @@ export default function Chart({args}) { // destruttura da props
                     >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
-                    <YAxis stroke={theme.palette.text.secondary}>
+                    <YAxis 
+                        stroke={theme.palette.text.secondary}
+                        type='number'
+                        domain={'dataMin-1000', 'dataMax+1000'}
+                    >
                         <Label
                             angle={-90}
                             position="left"
