@@ -44,7 +44,7 @@ const useStyles = makeStyles( (theme) => ({
 
 
 
-export default function topAppBar(){
+export default function topAppBar({open, handleDrawerOpen}){
     const classes = useStyles();
 
     return(
@@ -56,7 +56,8 @@ export default function topAppBar(){
                     aria-label="open drawer"
                     
                     className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                >{/*onClick=handleDrawerOpen*/}
+                    onClick={handleDrawerOpen}
+                >
                     <MenuIcon />
                 </IconButton>
                 <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>

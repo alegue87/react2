@@ -40,9 +40,8 @@ const useStyle = makeStyles( theme => ({
 }))
 
 
-export default function LeftDrawer(){
+export default function LeftDrawer({open, handleDrawerClose}){
     const classes = useStyle();
-    const open = true;
     return(
         <Drawer
             variant="permanent"
@@ -52,7 +51,7 @@ export default function LeftDrawer(){
             open={open}
         >
             <div className={classes.toolbarIcon}>
-                <IconButton >{/*onClick=handleDrawerClose*/}
+                <IconButton onClick={handleDrawerClose}>
                     <ChevronLeftIcon />
                 </IconButton>
             </div>
