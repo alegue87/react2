@@ -21,6 +21,9 @@ function openHomePage(){
 function logout(){
     window.location.href = '/logout'
 }
+function dashboard(){
+    window.location.href = '/dashboard'
+}
 export const mainListItems = (
     <div>
         <ListItem button onClick={openHomePage}>
@@ -29,7 +32,7 @@ export const mainListItems = (
             </ListItemIcon>
             <ListItemText primary='Home'/>
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={dashboard}>
             <ListItemIcon>
                 <DashboardIcon />
             </ListItemIcon>

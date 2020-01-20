@@ -46,7 +46,17 @@ const useStyles = makeStyles( (theme) => ({
 
 export default function topAppBar({open, handleDrawerOpen}){
     const classes = useStyles();
-
+    
+    var pathname = window.location.pathname;
+    var splittedPathname = pathname.split('/')
+    var basePathname = splittedPathname[1]
+    var page
+    if(basePathname == 'dashboard'){
+        page = 'DASHBOARD'
+    }
+    else if(basePathname == 'history'){
+        page = 'HISTORY ' + splittedPathname[2]
+    }
     return(
         <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
             <Toolbar className={classes.toolbar}>
@@ -61,7 +71,7 @@ export default function topAppBar({open, handleDrawerOpen}){
                     <MenuIcon />
                 </IconButton>
                 <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                    FXD - Dashboard
+                    FXD - {page}
                 </Typography>
                 <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
