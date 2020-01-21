@@ -3,8 +3,6 @@ import '../../css/login/login.css';
 import User from '../../images/user.png';
 import LoginService from './loginService';
 import Cookies from 'universal-cookie';
-import { Link } from 'react-router-dom';
-import Dashboard from '../dashboard/dashboard';
 
 export default class Login extends React.Component {
     constructor(prop){
@@ -117,7 +115,7 @@ export default class Login extends React.Component {
                     </form>
 
                     <div id='formFooter'>
-                        <a className='underlineHover' href='#'>Forgot Password?</a>
+                        {/*<a className='underlineHover' href='#'>Forgot Password?</a>*/}
                         {loginSuccessMessage}
                         {loginErrorMessage}                       
                     </div>

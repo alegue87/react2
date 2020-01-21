@@ -44,7 +44,7 @@ const useStyles = makeStyles( (theme) => ({
 
 
 
-export default function topAppBar({open, handleDrawerOpen}){
+export default function TopAppBar({open, handleDrawerOpen}){
     const classes = useStyles();
     
     var pathname = window.location.pathname;
