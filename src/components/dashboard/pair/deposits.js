@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Deposits({history, pairName}) {
+export default function Deposits({history, pairName, year, month}) {
     var dt = new Date();
     var date = dt.getMonth()+1 + '/' + dt.getFullYear();
     var last = history[history.length-1]
@@ -26,7 +26,7 @@ export default function Deposits({history, pairName}) {
         showGain = gain+' €'
     }
     const classes = useStyles();
-    const linkToHistory = '/history/'+pairName
+    const linkToHistory = '/history/'+pairName+'/'+year+'/'+month
     return (
         <React.Fragment>
             <Title>Balance</Title>

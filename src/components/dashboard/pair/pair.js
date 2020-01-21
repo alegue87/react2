@@ -12,20 +12,41 @@ export default class Pair extends React.Component{
         this.classPaper = this.props.classPaper;
         this.pairName = this.props.pairName;
         this.history = this.props.history;
+        this.year = this.props.year;
+        this.month = this.props.month;
     }
     render(){
+        var displayChart = "",
+            displayDeposit = ""
+        if(this.history.length == 0){
+            displayChart = (
+                <div>Nessun dato per {this.pairName}</div>
+            )
+            displayDeposit = (
+                <div></div>
+            )
+        }
+        else{
+            displayChart = <Chart args={{history:this.history, pairName:this.pairName}}/>
+            displayDeposit = <Deposits 
+                history={this.history} 
+                pairName={this.pairName}
+                year={this.year}
+                month={this.month}
+            />
+        }
         return(
             <Grid container spacing={1}>
                 {/* Chart */}
                 <Grid item xs={12} md={12} lg={9}>
-                    <Paper className={this.fixedHeightPaper} >
-                        <Chart args={{history:this.history, pairName:this.pairName}}/>
+                    <Paper className={this.fixedHeightPaper} style={{overflow:'hidden'}}>
+                        {displayChart} 
                     </Paper>
                 </Grid>
                 {/* Recent Deposits */}
                 <Grid item xs={12} md={12} lg={3}>
                     <Paper className={this.fixedHeightPaper}>
-                        <Deposits history={this.history} pairName={this.pairName}/>
+                        {displayDeposit}
                     </Paper>
                 </Grid>
                 {/* Recent Orders */}

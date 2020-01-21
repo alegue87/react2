@@ -14,7 +14,7 @@ export default function LoggedTemplate (props){
 
 
     return(
-        <div style={{display:"flex", height:'100%', width:'99%'}}>
+        <div style={{display:"flex", height:'100%', width:'100%', overflow:'hidden'}}>
             <TopAppBar open={open} handleDrawerOpen={handleDrawerOpen}/>
             <LeftDrawer open={open} handleDrawerClose={handleDrawerClose}/>
             {props.children}

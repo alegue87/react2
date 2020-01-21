@@ -45,11 +45,11 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
     },
     fixedHeight: {
-        height: 300,
+        height: 310,
     },
 }));
 
-export default function DashboardRender({ data }) { // destruttura da props
+export default function DashboardRender({ data, year, month }) { // destruttura da props
     const classes = useStyles();
     
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -65,6 +65,8 @@ export default function DashboardRender({ data }) { // destruttura da props
                     pairName={pairName}
                     history={pair[pairName]}
                     key={pairName}
+                    year={year}
+                    month={month}
                 />
 
             ))
@@ -76,7 +78,12 @@ export default function DashboardRender({ data }) { // destruttura da props
             <CssBaseline />
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
+                <Container maxWidth="lg" className={classes.container}
+                    style={{
+                        marginLeft:"0px", marginRight:"0px", float:"right",
+                        paddingLeft: "0px", paddingRight: "0px"
+                    }}
+                >
 
                     {pairs}
 

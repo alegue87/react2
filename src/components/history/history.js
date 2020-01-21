@@ -30,9 +30,10 @@ export default class History extends React.Component {
         }
         var cookie = new Cookie();
         this.username = cookie.get('username');
-        this.pair = this.props.history.location.pathname.split('/')[2]
-        this.month = 1;
-        this.year = 2020;
+        var splittedPathname = this.props.history.location.pathname.split('/')
+        this.pair = splittedPathname[2]
+        this.year = splittedPathname[3]
+        this.month = splittedPathname[4]        
     }
     previousImage(){
         if(this.state.imageIndex == 0){
@@ -99,7 +100,7 @@ export default class History extends React.Component {
             equity += data.equity + ' €'
             leverage += "1:"+data.leverage
             free_margin += Math.floor(data.free_margin)
-            profit += data.profit +' €'
+            profit += Math.floor(data.profit) +' €'
             positions = data.positions
         }
         document.addEventListener("keydown", this.onKeyPress.bind(this), false)
