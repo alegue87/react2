@@ -12,8 +12,6 @@ export default class LoginService{
                 else{
                     onError('Username o password errati')
                 }
-                
-
             },function(error){
                 console.error("Errore durante il login: "+error)
                 onError(error)

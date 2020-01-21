@@ -75,7 +75,8 @@ export default class Login extends React.Component {
     componentDidUpdate(){
         if(this.state.loginSuccess){
             setTimeout(() => {
-                this.props.history.push('/dashboard')
+                // this.props.history.push('/dashboard') non funziona come dovrebbe
+                window.location.href = '/dashboard'
             },2000)
         }
     }

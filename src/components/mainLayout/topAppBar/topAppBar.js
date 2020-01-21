@@ -73,11 +73,6 @@ export default function TopAppBar({open, handleDrawerOpen}){
                 <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                     FXD - {page}
                 </Typography>
-                <IconButton color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                        <NotificationsIcon />
-                    </Badge>
-                </IconButton>
             </Toolbar>
         </AppBar>
     )

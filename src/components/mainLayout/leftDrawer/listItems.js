@@ -11,6 +11,7 @@ import HomeIcon from '@material-ui/icons/Home';
 //import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Cookie from 'universal-cookie';
 
 function openUsersPage(){
     window.location.href = '/users'
@@ -19,7 +20,11 @@ function openHomePage(){
     window.location.href = '/'
 }
 function logout(){
-    window.location.href = '/logout'
+    // cancellare la sessione in backend
+    var cookie = new Cookie();
+    cookie.token = ""
+    cookie.username = ""
+    window.location.href = '/'
 }
 function dashboard(){
     window.location.href = '/dashboard'
