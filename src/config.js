@@ -1,7 +1,8 @@
 
 var BASE_URL,
     HOST_PORT;
-if(process.env.NODE_ENV == 'development'){
+var host = window.location.href.split('/')[2].split(':')[0] 
+if(host == 'localhost'){
     BASE_URL = 'http://localhost:3000/testAPI'
     HOST_PORT = 'http://localhost:3000'    
 }
@@ -13,4 +14,4 @@ else{
 
 module.exports = {BASE_URL, HOST_PORT};
 
-console.log(process.env.NODE_ENV)
+console.log("host:"+host)
