@@ -3,7 +3,7 @@ var BASE_URL,
     HOST_PORT;
 
 
-BASE_URL = 'https://expressapireact2.herokuapp.comtestAPI'
+BASE_URL = 'https://expressapireact2.herokuapp.com/testAPI'
 HOST_PORT = 'https://expressapireact2.herokuapp.com'
 
 
