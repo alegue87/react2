@@ -80,7 +80,7 @@ export default function DashboardRender({ data, year, month }) { // destruttura 
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}
                     style={{
-                        marginLeft:"0px", marginRight:"0px", float:"right",
+                        marginLeft:"0px", marginRight:"0px",
                         paddingLeft: "0px", paddingRight: "0px"
                     }}
                 >

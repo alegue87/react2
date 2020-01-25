@@ -27,10 +27,11 @@ export default class Login extends React.Component {
     submit(event){
         event.preventDefault();
     }
-    onSuccess(username, token){
+    onSuccess(username, token, sessionId){
         const cookies = new Cookies();
         cookies.set('token', token, { path: '/' })
         cookies.set('username', username, {path: '/'})
+        cookies.set('connect.sid', sessionId, {path: '/'})
         this.setState({
             loginSuccess:true,
             loginSuccessMessage:'Login effettuato, token: '+cookies.get('token')

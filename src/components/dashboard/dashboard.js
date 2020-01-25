@@ -34,7 +34,13 @@ export default class Dashboard extends React.Component{
         );     
     }
     onSuccess(data){
-        this.setState({data:data})
+        if(data.authenticated){
+           this.setState({data:data.info}) 
+        }
+        else{
+            window.location.href = '/login'
+        }
+        
     }
     onError(error){
         console.log(error)
@@ -67,7 +73,7 @@ export default class Dashboard extends React.Component{
         ]
         return(
             <Grid container spacing={1}>
-                <Grid item xs={12} md={12} lg={2} style={{marginTop:"96px", paddingLeft:"65px"}}>
+                <Grid item xs={12} md={12} lg={2} style={{marginTop:"96px", paddingLeft:"50px", flex:"none"}}>
                     <Paper>
                         <TextField
                         id="select_year"

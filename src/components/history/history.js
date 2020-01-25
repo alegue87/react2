@@ -62,17 +62,26 @@ export default class History extends React.Component {
             this.nextImage()
         }
     }
-    componentDidMount() {
+    componentWillMount() {
+        var cookie = new Cookie();
+        var token = cookie.get('token')
         var that = this
-        axios.get(BASE_URL + '/imagesData', { params: { 
-                username: that.username, 
+        axios.get(BASE_URL + '/imagesData', { params: {
+                token: token,
+                username: that.username,
                 pair: that.pair,
                 month: that.month,
                 year: that.year
             } }).then(
             function (result) {
                 console.log(result)
-                that.setState({imagesData: result.data})
+                if(result.data.authenticated){
+                    that.setState({imagesData: result.data.info})    
+                }
+                else{
+                    window.location.href = '/login'
+                }
+                
             },
             function (error) {
                 console.log(error)

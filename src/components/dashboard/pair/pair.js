@@ -38,7 +38,7 @@ export default class Pair extends React.Component{
         return(
             <Grid container spacing={1}>
                 {/* Chart */}
-                <Grid item xs={12} md={12} lg={9}>
+                <Grid item xs={12} md={12} lg={9} style={{paddingLeft:'5px'}}>
                     <Paper className={this.fixedHeightPaper} style={{overflow:'hidden'}}>
                         {displayChart} 
                     </Paper>

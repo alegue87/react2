@@ -6,8 +6,8 @@ export default class LoginService{
         axios.post(BASE_URL+'/login', {username:username, password: password})
             .then(function(result){
                 if(result.data.loginSuccess){
-                   console.log("Login effettuato, token" + result.data.token)
-                    onSuccess(username, result.data.token) 
+                    console.log("Login effettuato, token" + result.data.token)
+                    onSuccess(username, result.data.token, result.data.sessionId) 
                 }
                 else{
                     onError('Username o password errati')
